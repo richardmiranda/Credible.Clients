@@ -1,0 +1,21 @@
+﻿@model Credible.Clients.Models.RegistrationViewModel
+
+
+@if (!Model.Registrations.Any())
+{
+    <tr>
+        <td colspan="4">No record found.</td>
+    </tr>
+}
+else
+{
+    foreach (var course in Model.Registrations)
+     {
+         <tr>
+             <th scope="row">@course.User_Id</th>
+             <td>@course.First_Nm</td>
+             <td>@course.Last_Nm</td>
+             <td>@course.Registration_Dttm_Formatted</td>
+         </tr>
+     }
+}

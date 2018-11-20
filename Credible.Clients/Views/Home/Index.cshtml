@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Credible Developer Test Web Application Project</h1>
+    <p class="lead">ASP.NET MVC Web applications using HTML, CSS and JavaScript.</p>
+    <p>- Richard D. Miranda.</p>
+    <p>@Html.ActionLink("Click to view Client List", "Index", "Client", null, new { @class = "btn btn-primary btn-lg" })</p>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>Requirements</h2>
+        <p>Create an ASP.net MVC application that calls to a database to bring back all Clients, client courses, and users taking the courses.</p>
+        <ul>
+            <li>An end-user can see a list of clients.</li>
+            <li>Selecting a client should call to get list of courses for the selected client.</li>
+            <li>Selecting a course should bring up list of users registered to the course.</li>
+            <li>Display user id, first name, last name, registration date.</li>
+        </ul>
+        <h3>For extra credit:</h3>
+        <ul>
+            <li>Enable paging on the list of user registrations – 25 rows per page.</li>
+            <li>Allow sorting by all fields on the list of user registrations</li>
+            <li>Allow filtering based upon registration date on the list of user registrations</li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        <h2>Notes</h2>
+        <ul>
+            <li>The application is to be built using ASP.net MVC, C # , SQL server database (provided to you)</li>
+            <li>Use jquery to handle highlighting alternate rows on the table and making the app as async as possible.</li>
+            <li>Application must also make use of a service layer and any other .NET best practices</li>
+            <li>Any additional libraries added must be included in the project</li>
+            <li>Do not use stored procedures - please write LINQ to SQL / lambda expressions in line.</li>
+        </ul>
+    </div>
+</div>

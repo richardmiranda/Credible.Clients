@@ -1,0 +1,47 @@
+﻿@model Credible.Clients.Models.PortalViewModel
+@{
+    ViewBag.Title = "Clients";
+    var detailUrl = Url.Action("Detail", "Client");
+}
+<h2>@ViewBag.Title</h2>
+
+<table id="listtable" class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var portal in Model.Portals)
+    {
+        <tr title="Click to view courses" data-id="@portal.Portal_Id">
+            <th scope="row">@portal.Portal_Id</th>
+            <td>@portal.Portal_Nm</td>
+        </tr>
+    }
+    @if (!Model.Portals.Any())
+    {
+        <tr>
+            <td colspan="2">No record found.</td>
+        </tr>
+    }
+    </tbody>
+</table>
+@if (Model.Portals.Any())
+{
+    <script>
+        $(function() {
+            $('#listtable tbody tr').hover(function () {
+                $(this).addClass('hover-line');
+            }, function () {
+                $(this).removeClass('hover-line');
+            });
+            $('#listtable tbody tr').click(function () {
+                var url = '@detailUrl';
+                var id = $(this).data("id");
+                window.location.href = url + "\\" + id;
+            });
+        })
+    </script>
+}

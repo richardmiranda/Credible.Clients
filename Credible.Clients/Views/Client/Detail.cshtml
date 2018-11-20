@@ -1,0 +1,55 @@
+﻿@model Credible.Clients.Models.DetailViewModel
+@{
+    ViewBag.Title = "Client Detail";
+    var detailUrl = Url.Action("Registrations", "Course");
+}
+
+<h2>@ViewBag.Title</h2>
+<p>
+    <a href="javascript: history.go(-1)"><< Back</a>
+</p>
+<h3>(@Model.Portal.Portal_Id) @Model.Portal.Portal_Nm</h3>
+
+<table id="listtable" class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (!Model.Courses.Any())
+    {
+        <tr>
+            <td colspan="2">No record found.</td>
+        </tr>
+    }
+    else
+    {
+        foreach (var course in Model.Courses)
+         {
+             <tr title="Click to view registrations" data-id="@course.Course_Portal_Id">
+                 <th scope="row">@course.Course_Portal_Id</th>
+                 <td>@course.Course_Portal_Nm</td>
+             </tr>
+         }
+    }
+</table>
+
+@if (Model.Courses.Any())
+{
+    <script>
+        $(function() {
+            $('#listtable tbody tr').hover(function () {
+                $(this).addClass('hover-line');
+            }, function () {
+                $(this).removeClass('hover-line');
+            });
+            $('#listtable tbody tr').click(function () {
+                var url = '@detailUrl';
+                var id = $(this).data("id");
+                window.location.href = url + "\\" + id;
+            });
+        })
+    </script>
+}
